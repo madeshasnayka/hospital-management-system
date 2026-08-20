@@ -18,9 +18,9 @@ export const Appointments = () => {
   const fetchData = async () => {
     try {
       const [apptsRes, patientsRes, doctorsRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/v1/appointments'),
-        axios.get('http://localhost:5000/api/v1/patients'),
-        axios.get('http://localhost:5000/api/v1/doctors')
+        axios.get('https://hospital-management-system-ei40.onrender.com/api/v1/appointments'),
+        axios.get('https://hospital-management-system-ei40.onrender.com/api/v1/patients'),
+        axios.get('https://hospital-management-system-ei40.onrender.com/api/v1/doctors')
       ]);
 
       setAppointments(apptsRes.data.data || []);
@@ -45,7 +45,7 @@ export const Appointments = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/v1/appointments', {
+      await axios.post('https://hospital-management-syshttps://hospital-management-system-ei40.onrender.com/api/v1/appointments', {
         patient: formData.patientId,
         doctor: formData.doctorId,
         date: formData.date,
@@ -55,7 +55,7 @@ export const Appointments = () => {
       alert('Appointment booked successfully!');
       setFormData({ patientId: '', doctorId: '', date: '', time: '' });
       
-      const updatedAppts = await axios.get('http://localhost:5000/api/v1/appointments');
+      const updatedAppts = await axios.get('https://hospital-management-system-ei40.onrender.com/api/v1/appointments');
       setAppointments(updatedAppts.data.data || []);
     } catch (error) {
       console.error(error);

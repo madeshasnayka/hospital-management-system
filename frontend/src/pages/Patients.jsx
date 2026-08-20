@@ -9,7 +9,7 @@ export const Patients = () => {
   useEffect(() => {
     const fetchPatients = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/v1/patients');
+        const response = await axios.get('https://hospital-management-system-ei40.onrender.com/api/v1/patients');
         setPatients(response.data.data);
       } catch (error) {
         console.error('Error fetching patients:', error);

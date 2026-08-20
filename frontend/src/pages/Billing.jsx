@@ -33,7 +33,7 @@ export const Billing = () => {
     }
 
     try {
-      await axios.post('http://localhost:5000/api/v1/billing/discharge', {
+      await axios.post('https://hospital-management-system-ei40.onrender.com/api/v1/billing/discharge', {
         patientId,
         amount
       });
