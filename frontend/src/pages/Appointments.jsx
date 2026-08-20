@@ -45,7 +45,7 @@ export const Appointments = () => {
     }
 
     try {
-      await axios.post('https://hospital-management-syshttps://hospital-management-system-ei40.onrender.com/api/v1/appointments', {
+      await axios.post('https://hospital-management-system-ei40.onrender.com/api/v1/appointments', {
         patient: formData.patientId,
         doctor: formData.doctorId,
         date: formData.date,

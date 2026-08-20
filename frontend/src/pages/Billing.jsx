@@ -11,7 +11,7 @@ export const Billing = () => {
   // Fetch only currently Admitted patients for discharge/billing
   const fetchAdmittedPatients = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/v1/patients');
+      const res = await axios.get('https://hospital-management-system-ei40.onrender.com/api/v1/patients');
       const admittedOnly = (res.data.data || []).filter((p) => p.status === 'Admitted');
       setPatients(admittedOnly);
     } catch (err) {
