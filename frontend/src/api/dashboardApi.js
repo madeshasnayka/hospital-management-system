@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create an Axios instance pointing to your backend port
 const apiClient = axios.create({
-  baseURL: 'https://hospital-managemment-system-tt4o.onrender.com/api/v1',
+  baseURL: 'https://hospital-management-system-tt4o.onrender.com/api/v1',
   headers: {
     'Content-Type': 'application/json',
   },
