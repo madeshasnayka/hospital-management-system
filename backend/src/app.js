@@ -15,7 +15,13 @@ import doctorRoutes from './routes/doctorRoutes.js';
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://hospital-management-system-sigma-dun.vercel.app', // Your live frontend
+    'http://localhost:5173' // For local testing
+  ],
+  credentials: true
+}));
 app.use(express.json()); // Parses incoming JSON payloads
 app.use(express.urlencoded({ extended: true }));
 
