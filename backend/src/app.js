@@ -2,37 +2,31 @@ import express from 'express';
 import cors from 'cors';
 import dashboardRoutes from './routes/dashboardRoutes.js';
 import patientRoutes from './routes/patientRoutes.js';
-import { errorHandler } from './middlewares/errorHandler.js';
-import { processDischarge } from './controllers/billingController.js';
-// import dashboardRoutes from './routes/dashboardRoutes.js';
-// import patientRoutes from './routes/patientRoutes.js';
 import appointmentRoutes from './routes/appointmentRoutes.js';
 import doctorRoutes from './routes/doctorRoutes.js';
-// Assuming you created billingController.js from our previous step
-// import { processDischarge } from './controllers/billingController.js'; 
+import { errorHandler } from './middlewares/errorHandler.js';
+import { processDischarge } from './controllers/billingController.js';
 
-// import { errorHandler } from './middlewares/errorHandler.js';
 const app = express();
 
 // Middlewares
 app.use(cors({
   origin: [
-    'https://hospital-management-system-sigma-dun.vercel.app', // Your live frontend
-    'http://localhost:5173' // For local testing
+    'https://hospital-management-system-sigma-dun.vercel.app', // <-- Trailing slash REMOVED!
+    'http://localhost:5173'
   ],
   credentials: true
 }));
-app.use(express.json()); // Parses incoming JSON payloads
+
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Health Check Route
 app.get('/', (req, res) => {
   res.status(200).json({ status: "success", message: "Backend is live and healthy!" });
 });
-// Mount Routes
-app.use('/api/v1/dashboard', dashboardRoutes);
-app.use('/api/v1/dashboard', dashboardRoutes);
-app.use('/api/v1/patients', patientRoutes);
-// Global Error Handler Middleware (must be at the end)
-// Mount all API routes
+
+// Mount All API Routes (Duplicates Removed)
 app.use('/api/v1/dashboard', dashboardRoutes);
 app.use('/api/v1/patients', patientRoutes);
 app.use('/api/v1/appointments', appointmentRoutes);
@@ -43,7 +37,7 @@ const billingRouter = express.Router();
 billingRouter.post('/discharge', processDischarge);
 app.use('/api/v1/billing', billingRouter);
 
+// Global Error Handler (must be at the very end)
 app.use(errorHandler);
-
 
 export default app;
