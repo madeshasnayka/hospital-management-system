@@ -24,7 +24,9 @@ app.use(cors({
 }));
 app.use(express.json()); // Parses incoming JSON payloads
 app.use(express.urlencoded({ extended: true }));
-
+app.get('/', (req, res) => {
+  res.status(200).json({ status: "success", message: "Backend is live and healthy!" });
+});
 // Mount Routes
 app.use('/api/v1/dashboard', dashboardRoutes);
 app.use('/api/v1/dashboard', dashboardRoutes);
